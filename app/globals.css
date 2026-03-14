@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-display: "DM Serif Display", Georgia, serif;
+  --color-zinc-black: #09090b;
+  --color-surface-gray: #18181b;
+  --color-off-white: #e5e5e5;
+  --color-muted-gray: #888888;
+  --color-highlight: #ef4444;
+}
+
+/* ── ZTNature fallback stack ─────────────────────────────────────── */
+/* We load DM Serif Display as a close analogue (high contrast, wide
+   weight range). Swap in a real ZTNature @font-face if you have the
+   license files. */
+
+:root {
+  --font-display: "DM Serif Display", Georgia, serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #000;
+  color: #e5e5e5;
+  font-family: var(--font-display);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── Global grain overlay ────────────────────────────────────────── */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+}
+
+/* ── Typography helpers ──────────────────────────────────────────── */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.tracking-tighter-custom {
+  letter-spacing: -0.03em;
+}
+
+/* ── Wavy underline for social links ────────────────────────────── */
+.wavy-link {
+  text-decoration: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='4'%3E%3Cpath fill='none' stroke='%23888' stroke-width='1' d='M0 3 Q5 0 10 3 Q15 6 20 3'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: 0 100%;
+  background-size: 20px 4px;
+  padding-bottom: 6px;
+  transition: background-image 0.3s;
+}
+
+.wavy-link:hover {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='4'%3E%3Cpath fill='none' stroke='%23ffffff' stroke-width='1.5' d='M0 3 Q5 0 10 3 Q15 6 20 3'/%3E%3C/svg%3E");
+}
+
+/* ── Selection colour ────────────────────────────────────────────── */
+::selection {
+  background: #ef4444;
+  color: #fff;
+}
