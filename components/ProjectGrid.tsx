@@ -1,194 +1,90 @@
-"use client";
-import { useState } from "react";
-import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
 interface Project {
   title: string;
   subtitle: string;
-  tags: string[];
+  tags: string;
   href?: string;
-  year: string;
-  color: string;
+  image: string;
 }
 
 const projects: Project[] = [
   {
-    title: "CogniChat",
+    title: "COGNI CHAT",
     subtitle: "Mini RAG AI System",
-    tags: ["FastAPI", "Pinecone", "Gemini", "Cohere"],
-    href: "https://cogni-chat-phi.vercel.app/",
-    year: "2024",
-    color: "#1a1010",
+    tags: "AI System / FastAPI / Pinecone",
+    href: "https://github.com/itsmeaabhii/Cogni_Chat",
+    image: "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=1000&auto=format&fit=crop",
   },
   {
-    title: "NexusCode",
-    subtitle: "Real-time Collaborative Code Editor",
-    tags: ["Next.js", "TypeScript", "Yjs", "WebSockets"],
-    year: "2024",
-    color: "#0d1117",
+    title: "FLUTTER AI CHAT",
+    subtitle: "Modern AI-powered chat application",
+    tags: "Mobile / Flutter / Firebase",
+    href: "https://github.com/itsmeaabhii/flutter-chat-app",
+    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000&auto=format&fit=crop",
   },
   {
-    title: "Java RAG",
-    subtitle: "Spring Boot + Lucene Pipeline",
-    tags: ["Java", "Spring Boot", "Apache Lucene", "Ollama"],
-    year: "2024",
-    color: "#0f0e0a",
+    title: "NATIVE MUSIC",
+    subtitle: "Local music library management",
+    tags: "Android / Kotlin",
+    href: "https://github.com/itsmeaabhii/music-player",
+    image: "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?q=80&w=1000&auto=format&fit=crop",
+  },
+  {
+    title: "SECURE MESSENGER",
+    subtitle: "RSA & AES encryption system",
+    tags: "Cryptography / Security / Python",
+    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1000&auto=format&fit=crop",
   },
 ];
 
-function ProjectCard({ project, index }: { project: Project; index: number }) {
-  const [hovered, setHovered] = useState(false);
-
-  return (
-    <motion.a
-      href={project.href || "#"}
-      target={project.href ? "_blank" : undefined}
-      rel="noopener noreferrer"
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.7, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
-      className="relative block overflow-hidden cursor-pointer"
-      style={{
-        aspectRatio: "16/10",
-        background: project.color,
-      }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      {/* Hover background overlay */}
-      <motion.div
-        className="absolute inset-0 z-0"
-        animate={{ opacity: hovered ? 1 : 0 }}
-        transition={{ duration: 0.4 }}
-        style={{
-          background:
-            "radial-gradient(ellipse at 30% 40%, rgba(139,69,69,0.25) 0%, transparent 70%)",
-        }}
-      />
-
-      {/* Image placeholder with architectural lines */}
-      <div className="absolute inset-0 z-0 opacity-20">
-        {[...Array(6)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute border-t border-white/10"
-            style={{ top: `${(i + 1) * 16}%`, left: 0, right: 0 }}
-          />
-        ))}
-      </div>
-
-      {/* Image scale effect */}
-      <motion.div
-        className="absolute inset-0 z-0"
-        animate={{ scale: hovered ? 1.05 : 1 }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        style={{
-          background: `linear-gradient(135deg, ${project.color} 0%, #18181b 100%)`,
-        }}
-      />
-
-      {/* Bottom info */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 p-8 pb-10">
-        {/* Tag line */}
-        <motion.div
-          className="flex gap-3 mb-3"
-          animate={{ y: hovered ? 0 : 4, opacity: hovered ? 1 : 0.7 }}
-          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-        >
-          {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className="text-[#888] font-mono text-[12px] uppercase tracking-widest"
-            >
-              {tag}
-            </span>
-          ))}
-        </motion.div>
-
-        <div className="flex items-end justify-between">
-          <div>
-            <h3
-              className="font-display text-[#e5e5e5] uppercase leading-none"
-              style={{
-                fontSize: "clamp(1.5rem, 3.5vw, 2.5rem)",
-                fontWeight: 900,
-                letterSpacing: "-0.03em",
-              }}
-            >
-              {project.title}
-            </h3>
-            <p className="text-[#888] font-display text-base font-light italic mt-1">
-              {project.subtitle}
-            </p>
-          </div>
-
-          {/* Arrow button */}
-          <motion.div
-            className="flex items-center justify-center bg-white text-black shrink-0"
-            style={{ width: 44, height: 44 }}
-            animate={{ opacity: hovered ? 1 : 0, scale: hovered ? 1 : 0.8 }}
-            transition={{ duration: 0.3 }}
-          >
-            <ArrowUpRight size={20} strokeWidth={2} />
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Year label */}
-      <span className="absolute top-6 right-6 text-[#555] font-mono text-xs tracking-widest">
-        {project.year}
-      </span>
-    </motion.a>
-  );
-}
-
 export default function ProjectGrid() {
   return (
-    <section id="work" className="bg-white py-24 px-6">
-      {/* Heading */}
-      <motion.div
-        className="mb-16"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <h2
-          className="font-display text-black uppercase leading-none"
-          style={{
-            fontSize: "clamp(2.5rem, 8vw, 8vw)",
-            fontWeight: 900,
-            letterSpacing: "-0.03em",
-          }}
-        >
-          SELECTED{" "}
-          <span
-            className="italic"
-            style={{ fontWeight: 100 }}
-          >
-            Works
-          </span>
+    <section id="projects" className="py-32 px-6 md:px-12 max-w-7xl mx-auto">
+      <div className="flex justify-between items-end mb-20 border-b border-[#222222] pb-10">
+        <h2 className="text-xs font-bold tracking-[0.4em] uppercase text-[#FF6B50]">
+          Selected Work
         </h2>
-        <p className="text-[#888] font-mono text-sm mt-4 uppercase tracking-widest">
-          — AI Systems · Real-time · Backend Infrastructure
-        </p>
-      </motion.div>
+        <span className="hidden md:block text-[#444444] text-xs font-medium uppercase tracking-widest">
+          Personal Projects
+        </span>
+      </div>
 
-      {/* 2-col grid */}
-      <div
-        className="grid gap-8"
-        style={{
-          gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 480px), 1fr))",
-        }}
-      >
-        {/* First card spans full width on large screens */}
-        <div className="lg:col-span-2">
-          <ProjectCard project={projects[0]} index={0} />
-        </div>
-        <ProjectCard project={projects[1]} index={1} />
-        <ProjectCard project={projects[2]} index={2} />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24">
+        {projects.map((project, index) => (
+          <article
+            key={project.title}
+            className="group cursor-pointer"
+          >
+            <a
+              href={project.href || "#"}
+              target={project.href ? "_blank" : undefined}
+              rel="noopener noreferrer"
+              className="block"
+            >
+              <div className="aspect-[4/3] overflow-hidden bg-[#111111] rounded-2xl relative border border-[#222222] group-hover:border-[#FF6B50]/30 transition-colors duration-500">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-700 ease-out"
+                />
+              </div>
+              <div className="mt-8 flex justify-between items-start px-2">
+                <div>
+                  <h3 className="text-3xl font-bold tracking-tight mb-2 group-hover:text-[#FF6B50] transition-colors font-satoshi text-white">
+                    {project.title}
+                  </h3>
+                  <p className="text-[#666666] text-[10px] font-bold uppercase tracking-[0.2em]">
+                    {project.tags}
+                  </p>
+                </div>
+                <div className="p-3 rounded-full border border-[#333333] group-hover:bg-[#FF6B50] group-hover:text-black group-hover:border-transparent transition-all duration-300">
+                  <ArrowUpRight className="text-2xl w-6 h-6 text-white group-hover:text-black" />
+                </div>
+              </div>
+            </a>
+          </article>
+        ))}
       </div>
     </section>
   );

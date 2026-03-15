@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Abhishek Prakash — Full-Stack Developer",
-  description:
-    "Full-Stack Developer focused on AI applications, real-time systems, and backend infrastructure.",
+  title: "Superdesign | AI Product Designer",
+  description: "Clean, scalable design that helps you ship faster.",
 };
 
 export default function RootLayout({
@@ -14,7 +14,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <head>
+        <Script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js" strategy="afterInteractive" />
+      </head>
+      <body className="antialiased min-h-screen selection-coral overflow-x-hidden bg-[#050505]">
+        {children}
+      </body>
     </html>
   );
 }

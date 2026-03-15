@@ -1,111 +1,70 @@
-"use client";
-import { motion } from "framer-motion";
-
-const socials = [
-  { label: "GitHub", href: "https://github.com/abhishek" },
-  { label: "LinkedIn", href: "https://linkedin.com/in/abhishek" },
-  { label: "Twitter", href: "https://twitter.com/abhishek" },
-];
+import { Instagram, Twitter, Linkedin, Globe, MapPin } from "lucide-react";
 
 export default function Footer() {
   return (
     <footer
       id="contact"
-      className="bg-[#fafafa] py-20 px-6"
-      style={{ color: "#000" }}
+      className="relative pt-32 pb-24 px-6 md:px-12 border-t border-[#111111]/50 bg-[#030303]"
     >
-      {/* Big CTA heading */}
-      <motion.div
-        className="border-b border-black/10 pb-12 mb-16 overflow-hidden"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <h2
-          className="font-display text-black uppercase leading-none tracking-tighter-custom w-full"
-          style={{
-            fontSize: "clamp(3rem, 12vw, 12vw)",
-            fontWeight: 900,
-            letterSpacing: "-0.04em",
-          }}
-        >
-          START A
-          <br />
-          <span className="italic" style={{ fontWeight: 100 }}>
-            Project
-          </span>
-        </h2>
-      </motion.div>
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-16">
+        <div className="flex-1">
+          <h2 className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-8 select-none font-satoshi hero-text">
+            Let's
+            <br />
+            talk.
+          </h2>
+          <div className="flex flex-col gap-6">
+            <a
+              href="mailto:abhishekprakash963@gmail.com"
+              className="text-2xl md:text-3xl font-semibold hover:text-[#FF6B50] transition-all w-fit text-[#aaaaaa] hover:text-white font-satoshi border-b border-transparent hover:border-[#FF6B50] pb-1"
+            >
+              abhishekprakash963@gmail.com
+            </a>
+            <p className="text-[#666666] flex items-center gap-2 font-satoshi">
+              <MapPin className="w-5 h-5" />
+              Available for worldwide collaborations.
+            </p>
+          </div>
+        </div>
 
-      {/* 3-column grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-end">
-        {/* Col 1 — Social links */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <p className="font-mono text-[#888] text-xs uppercase tracking-widest mb-6">
-            Find me online
-          </p>
-          <ul className="flex flex-col gap-3">
-            {socials.map((s) => (
-              <li key={s.label}>
-                <a
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="wavy-link font-display text-black text-lg font-medium"
-                >
-                  {s.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </motion.div>
-
-        {/* Col 2 — Email */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <p className="font-mono text-[#888] text-xs uppercase tracking-widest mb-4">
-            Direct
-          </p>
+        <div className="flex gap-4 md:mb-6">
           <a
-            href="mailto:hello@abhishekprakash.dev"
-            className="font-display text-black font-medium leading-tight hover:opacity-60 transition-opacity"
-            style={{ fontSize: "clamp(1.2rem, 2.5vw, 1.875rem)" }}
+            href="https://github.com/itsmeaabhii"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-14 h-14 border border-[#333333] rounded-full flex items-center justify-center text-white hover:bg-white hover:text-black transition-all hover:-translate-y-2"
           >
-            hello@abhishek
-            <br />
-            prakash.dev
+            <Globe className="w-5 h-5" />
           </a>
-        </motion.div>
+          <a
+            href="https://twitter.com/abhishek"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-14 h-14 border border-[#333333] rounded-full flex items-center justify-center text-white hover:bg-white hover:text-black transition-all hover:-translate-y-2"
+          >
+            <Twitter className="w-5 h-5" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/abhishek-prakash-0391402b7/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-14 h-14 border border-[#333333] rounded-full flex items-center justify-center text-white hover:bg-white hover:text-black transition-all hover:-translate-y-2"
+          >
+            <Linkedin className="w-5 h-5" />
+          </a>
+        </div>
+      </div>
 
-        {/* Col 3 — Rights */}
-        <motion.div
-          className="md:text-right"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <p className="font-mono text-[#888] text-xs uppercase tracking-widest mb-4">
-            MMXXVI
-          </p>
-          <p className="font-display text-[#555] text-sm leading-relaxed">
-            Abhishek Prakash
-            <br />
-            Full-Stack Developer
-            <br />
-            All rights reserved © 2026
-          </p>
-        </motion.div>
+      <div className="max-w-7xl mx-auto mt-40 pt-10 border-t border-[#111111] flex flex-col md:flex-row justify-between text-[#333333] text-[10px] font-bold uppercase tracking-widest font-satoshi">
+        <p>&copy; 2026 Abhishek Prakash. All rights reserved.</p>
+        <div className="flex gap-10 mt-6 md:mt-0">
+          <a href="#" className="hover:text-[#666666] transition-colors">
+            Privacy Policy
+          </a>
+          <a href="#" className="hover:text-[#666666] transition-colors">
+            Terms of Service
+          </a>
+        </div>
       </div>
     </footer>
   );
