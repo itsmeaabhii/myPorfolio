@@ -1,0 +1,36 @@
+.footer {
+  background: rgba(10, 10, 10, 0.9);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 30px 40px;
+  margin-top: 60px;
+}
+
+.footerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footerContainer p {
+  color: #777;
+  font-size: 15px;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 20px;
+}
+
+.socialIcons a {
+  font-size: 22px;
+  color: #777;
+  text-decoration: none;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.socialIcons a:hover {
+  color: #aaaaaa;
+  transform: scale(1.15);
+}

@@ -1,0 +1,81 @@
+.header {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: 85%;
+  padding: 14px 30px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  background: rgba(20, 20, 20, 0.4);
+  backdrop-filter: blur(12px);
+
+  transition: 0.4s;
+}
+
+.scroll {
+  background: rgba(15, 15, 15, 0.75);
+  backdrop-filter: blur(16px);
+}
+
+.logo h1 {
+  color: #ddd;
+  letter-spacing: 2px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.logo h1 span {
+  color: #777777;
+}
+
+.links {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.links li a {
+  text-decoration: none;
+  color: #ccc;
+  font-size: 17px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.links li a:hover {
+  color: #777777;
+  text-shadow: 0 0 8px rgba(119, 119, 119, 0.7);
+}
+
+.icons {
+  display: flex;
+  list-style: none;
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+}
+
+.icons li {
+  font-size: 22px;
+  transition: 0.3s;
+}
+
+.icons li a {
+  text-decoration: none;
+  color: #ccc;
+}
+
+.icons li a:hover {
+  color: #777777;
+  text-shadow: 0 0 8px rgba(119, 119, 119, 0.8);
+}
