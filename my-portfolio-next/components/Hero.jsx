@@ -1,25 +1,45 @@
 'use client';
 
+import Image from "next/image";
 import styles from "./Hero.module.css";
-import UnicornScene from "unicornstudio-react";
 
 export default function Hero() {
   return (
-    <div className={styles.hero} id="hero">
-      <UnicornScene
-        projectId="kLM3mnmLXnAU5DHNMhUN"
-        width="100%"
-        height="900px"
-        scale={1}
-        dpi={1.5}
-        sdkUrl="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@2.1.3/dist/unicornStudio.umd.js"
-      />
-      <div className={styles.content}>
-        <div className={styles.buttn}>
-          <a href="#contact">Contact</a>
-          <a href="#about">Who I am</a>
+    <section className={styles.hero} id="hero">
+
+      {/* ── Big background name text ── */}
+      <p className={styles.bgText}>Hi! I&apos;m Abhishek</p>
+
+      {/* ── Centered character with hover swap ── */}
+      <div className={styles.characterWrap}>
+        {/* Default: student */}
+        <div className={styles.charImg} id="charDefault">
+          <Image
+            src="/images/img1.png"
+            alt="Abhishek"
+            fill
+            style={{ objectFit: "contain", objectPosition: "bottom center" }}
+            priority
+          />
+        </div>
+        {/* Hover: samurai */}
+        <div className={styles.charImgHover} id="charHover">
+          <Image
+            src="/images/img2.png"
+            alt="Abhishek — samurai mode"
+            fill
+            style={{ objectFit: "contain", objectPosition: "bottom center" }}
+            priority
+          />
         </div>
       </div>
-    </div>
+
+      {/* ── Buttons bottom-left ── */}
+      <div className={styles.buttons}>
+        <a href="#contact" className={styles.btn}>Contact</a>
+        <a href="#about"   className={styles.btn}>Who I am</a>
+      </div>
+
+    </section>
   );
 }

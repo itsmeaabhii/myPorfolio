@@ -1,42 +1,60 @@
 import styles from "./Project.module.css";
-import Image from "next/image";
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 
 const projects = [
   {
-    title: "E-Commerce Website",
-    img: "/images/Cleveroad.jpg",
-    desc: "Modern online store with product filtering, cart, and payment system.",
-    skills: ["HTML", "CSS", "JavaScript"],
+    title: "LiveShare",
+    lang: "TypeScript",
+    color: "#3178c6",
+    desc: "Real-time collaborative sharing app built with TypeScript. Share content live with others instantly.",
+    skills: ["TypeScript", "Next.js", "WebSockets"],
+    github: "https://github.com/itsmeaabhii/LiveShare",
+    live: null,
   },
   {
-    title: "Portfolio Website",
-    img: "/images/Capture d'écran 2025-10-22 182207.png",
-    desc: "Personal portfolio to showcase my design and coding projects.",
-    skills: ["HTML", "CSS", "Bootstrap"],
+    title: "Java RAG System",
+    lang: "Java",
+    color: "#f89820",
+    desc: "Retrieval-Augmented Generation system built in Java — an AI pipeline for intelligent document Q&A.",
+    skills: ["Java", "RAG", "AI / LLM"],
+    github: "https://github.com/itsmeaabhii/java-rag-system",
+    live: null,
+  },
+  {
+    title: "Airbnb REST API",
+    lang: "Python",
+    color: "#ff385c",
+    desc: "Airbnb-style RESTful API built with Python. Handles listings, bookings, auth, and pricing.",
+    skills: ["Python", "FastAPI", "REST API"],
+    github: "https://github.com/itsmeaabhii/airbnb-api",
+    live: null,
+  },
+  {
+    title: "Chat App",
+    lang: "Flutter",
+    color: "#54c5f8",
+    desc: "Real-time cross-platform chat application with Firebase backend — built using Flutter & Dart.",
+    skills: ["Flutter", "Dart", "Firebase"],
+    github: "https://github.com/itsmeaabhii/ChatApp",
+    live: null,
+  },
+  {
+    title: "Expense Tracker",
+    lang: "Flutter",
+    color: "#54c5f8",
+    desc: "Personal finance tracker app with category tracking, charts, and daily budget alerts.",
+    skills: ["Flutter", "Dart", "SQLite"],
+    github: "https://github.com/itsmeaabhii/ExpenseTracker",
+    live: null,
   },
   {
     title: "Weather App",
-    img: "/images/Weather Forecast Dashboard.jpg",
-    desc: "Responsive app showing real-time weather data using API integration.",
-    skills: ["HTML", "CSS", "API"],
-  },
-  {
-    title: "Blog Website",
-    img: "/images/WordPress dashboard design concept.jpg",
-    desc: "Clean and simple blogging platform with markdown support.",
-    skills: ["HTML", "Tailwind", "JavaScript"],
-  },
-  {
-    title: "Game Landing Page",
-    img: "/images/Game Dashboard Design.jpg",
-    desc: "Landing page for a game with animations and parallax effects.",
-    skills: ["HTML", "CSS", "GSAP"],
-  },
-  {
-    title: "Task Manager",
-    img: "/images/Task manager app.jpg",
-    desc: "Task tracking web app with CRUD features and clean UI.",
-    skills: ["HTML", "CSS", "JS"],
+    lang: "Flutter",
+    color: "#54c5f8",
+    desc: "Responsive weather forecast app with real-time data, OpenWeather API integration, and a clean UI.",
+    skills: ["Flutter", "Dart", "REST API"],
+    github: "https://github.com/itsmeaabhii/wheatherApp",
+    live: null,
   },
 ];
 
@@ -44,19 +62,17 @@ export default function Project() {
   return (
     <section className={styles.project} id="project">
       <div className={styles.title}>
+        <span className={styles.eyebrow}>What I&apos;ve built</span>
         <h2>Projects</h2>
       </div>
 
       <div className={styles.projectsContainer}>
         {projects.map((project, index) => (
           <div className={styles.projectCard} key={index}>
-            <div className={styles.imgWrapper}>
-              <Image
-                src={project.img}
-                alt={project.title}
-                fill
-                style={{ objectFit: "cover" }}
-              />
+            {/* Language badge */}
+            <div className={styles.langBadge} style={{ background: project.color + "22", color: project.color, borderColor: project.color + "44" }}>
+              <span className={styles.langDot} style={{ background: project.color }} />
+              {project.lang}
             </div>
 
             <h3>{project.title}</h3>
@@ -69,12 +85,14 @@ export default function Project() {
             </div>
 
             <div className={styles.btns}>
-              <a href="#" className={styles.btn}>
-                <i className="fab fa-github"></i> GitHub
+              <a href={project.github} target="_blank" rel="noreferrer" className={styles.btn}>
+                <FaGithub /> GitHub
               </a>
-              <a href="#" className={styles.btn}>
-                <i className="fas fa-external-link-alt"></i> Live Demo
-              </a>
+              {project.live && (
+                <a href={project.live} target="_blank" rel="noreferrer" className={`${styles.btn} ${styles.btnLive}`}>
+                  <FaExternalLinkAlt /> Live Demo
+                </a>
+              )}
             </div>
           </div>
         ))}

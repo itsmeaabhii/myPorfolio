@@ -1,87 +1,185 @@
 .about {
-  margin: 70px auto;
   max-width: 1200px;
-  padding: 40px;
-}
-
-.title {
-  margin-bottom: 70px;
-  font-size: 42px;
-  color: #777777;
-  text-align: center;
+  margin: 0 auto;
+  padding: 100px 40px 60px;
   position: relative;
+  z-index: 1;
 }
 
-.title::after {
-  content: "";
-  width: 120px;
-  height: 3px;
-  background: #777777;
+/* Section title */
+.title {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.eyebrow {
   display: block;
-  margin: 15px auto 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #6c63ff;
+  margin-bottom: 10px;
+}
+
+.title h2 {
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 800;
+  color: #e8e8f5;
+  position: relative;
+  display: inline-block;
+}
+
+.title h2::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #6c63ff, #a78bfa);
   border-radius: 2px;
 }
 
+/* Content layout */
 .content {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 80px;
+  gap: 70px;
+  align-items: flex-start;
 }
 
+/* Flip Card */
 .photoCard {
-  width: 320px;
-  height: 420px;
+  flex-shrink: 0;
+  width: 280px;
+  height: 350px;
   perspective: 1000px;
   cursor: pointer;
-  flex-shrink: 0;
+  position: relative;
+}
+
+.flipHint {
+  text-align: center;
+  font-size: 11px;
+  color: rgba(167, 139, 250, 0.5);
+  margin-top: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .photoInner {
-  position: relative;
   width: 100%;
   height: 100%;
-  transition: transform 0.7s;
+  position: relative;
   transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(108, 99, 255, 0.15);
 }
 
-.photoInner.flip {
+.flip {
   transform: rotateY(180deg);
 }
 
-.photoFront {
+.photoFront,
+.photoBack {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   backface-visibility: hidden;
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
 }
 
 .photoBack {
-  position: absolute;
-  width: 100%;
-  height: 100%;
   transform: rotateY(180deg);
-  backface-visibility: hidden;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
 }
 
-.photoCard:hover .photoFront img,
-.photoCard:hover .photoBack img {
-  transform: scale(1.05);
-}
-
+/* Text Side */
 .textAbout {
-  max-width: 520px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hello {
+  font-size: 20px;
+  font-weight: 700;
+  color: #e0e0f5;
 }
 
 .textAbout p {
-  font-size: 18px;
-  line-height: 1.9;
-  color: #cccccc;
-  text-align: left;
+  font-size: 15.5px;
+  color: #9090b8;
+  line-height: 1.8;
+}
+
+.textAbout strong {
+  color: #c8c8ee;
+  font-weight: 600;
+}
+
+.infoRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  margin-top: 8px;
+}
+
+.infoRow span {
+  font-size: 14px;
+  color: #8888aa;
+}
+
+.ghBtn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 11px 28px;
+  background: rgba(108, 99, 255, 0.12);
+  border: 1px solid rgba(108, 99, 255, 0.35);
+  color: #a78bfa;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  width: fit-content;
+}
+
+.ghBtn:hover {
+  background: rgba(108, 99, 255, 0.25);
+  transform: translateX(4px);
+  border-color: #a78bfa;
+}
+
+@media (max-width: 860px) {
+  .content {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .photoCard {
+    width: 240px;
+    height: 300px;
+  }
+
+  .textAbout {
+    text-align: center;
+  }
+
+  .infoRow {
+    justify-content: center;
+  }
+
+  .ghBtn {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .about {
+    padding: 80px 20px 40px;
+  }
 }
